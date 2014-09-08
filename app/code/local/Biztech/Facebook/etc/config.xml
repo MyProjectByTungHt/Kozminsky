@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+* @category   Biztech
+* @package    Biztech_Facebook
+* @author     ModuleCreator
+* @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/
+-->
+<config>
+    <modules>
+        <Biztech_Facebook>
+            <version>0.1.0</version>
+        </Biztech_Facebook>
+    </modules>
+    <frontend>
+        <routers>
+            <facebook>
+                <use>standard</use>
+                <args>
+                    <module>Biztech_Facebook</module>
+                    <frontName>facebook</frontName>
+                </args>
+            </facebook>
+        </routers>
+        <layout>
+            <updates>
+                <facebook>
+                    <file>facebook.xml</file>
+                </facebook>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+            <facebook>
+                <use>admin</use>
+                <args>
+                    <module>Biztech_Facebook</module>
+                    <frontName>facebook</frontName>
+                </args>
+            </facebook>
+        </routers>
+    </admin>
+    <adminhtml>
+        <!--<menu>
+        <facebook module="facebook">
+        <title>Facebook</title>
+        <sort_order>71</sort_order>               
+        <children>
+        <items module="facebook">
+        <title>Manage Items</title>
+        <sort_order>0</sort_order>
+        <action>facebook/adminhtml_facebook</action>
+        </items>
+        </children>
+        </facebook>
+        </menu>-->
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <Biztech_Facebook>
+                            <title>Facebook Module</title>
+                            <sort_order>10</sort_order>
+                        </Biztech_Facebook>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <facebook>
+                                            <title>Facebook Activity Feed</title>
+                                        </facebook>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <facebook>
+                    <file>facebook.xml</file>
+                </facebook>
+            </updates>
+        </layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <facebook>
+                <class>Biztech_Facebook_Model</class>
+                <resourceModel>facebook_mysql4</resourceModel>
+            </facebook>
+            <facebook_mysql4>
+                <class>Biztech_Facebook_Model_Mysql4</class>
+                <entities>
+                    <facebook>
+                        <table>facebook</table>
+                    </facebook>
+                </entities>
+            </facebook_mysql4>
+        </models>
+        <resources>
+            <facebook_setup>
+                <setup>
+                    <module>Biztech_Facebook</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </facebook_setup>
+            <facebook_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </facebook_write>
+            <facebook_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </facebook_read>
+        </resources>
+        <blocks>
+            <facebook>
+                <class>Biztech_Facebook_Block</class>
+            </facebook>
+        </blocks>
+        <helpers>
+            <facebook>
+                <class>Biztech_Facebook_Helper</class>
+            </facebook>
+        </helpers>
+    </global>
+</config>

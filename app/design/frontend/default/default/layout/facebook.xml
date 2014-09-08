@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="after_body_start">
+            <block type="core/template" name="facebook_sdk" template="facebook/default.phtml" />
+        </reference>
+    </default>
+    <cms_index_index>
+        <reference name="left">
+            <block type="core/template" name="facebook_activity_left_cms" after="-" >
+                <action method="setTemplate" ifconfig="facebook/activity_feed/left_home_column">
+                    <template>facebook/facebook_activity.phtml</template>
+                </action>
+            </block> 
+        </reference>
+        <reference name="right">
+            <block type="core/template" name="facebook_activity_right_cms" after="-" >
+                <action method="setTemplate" ifconfig="facebook/activity_feed/right_home_column">
+                    <template>facebook/facebook_activity.phtml</template>
+                </action>
+            </block> 
+        </reference>
+    </cms_index_index>
+    <cms_page_view>
+        <reference name="left">
+            <block type="core/template" name="facebook_activity_left_cmspage" after="-" >
+                <action method="setTemplate" ifconfig="facebook/activity_feed/left_page_column">
+                    <template>facebook/facebook_activity.phtml</template>
+                </action>
+            </block> 
+        </reference>
+        <reference name="right">
+            <block type="core/template" name="facebook_activity_right_cmspage" after="-" >
+                <action method="setTemplate" ifconfig="facebook/activity_feed/right_page_column">
+                    <template>facebook/facebook_activity.phtml</template>
+                </action>
+            </block> 
+        </reference>
+    </cms_page_view>
+    <catalog_category_view>
+        <reference name="left">
+            <block type="core/template" name="facebook_activity_left_category" after="-" >
+                <action method="setTemplate" ifconfig="facebook/activity_feed/left_category_column">
+                    <template>facebook/facebook_activity.phtml</template>
+                </action>
+            </block> 
+        </reference>
+        <reference name="right">
+            <block type="core/template" name="facebook_activity_right_category" after="-" >
+                <action method="setTemplate" ifconfig="facebook/activity_feed/right_category_column">
+                    <template>facebook/facebook_activity.phtml</template>
+                </action>
+            </block> 
+        </reference>
+    </catalog_category_view>
+    <catalog_product_view>
+        <reference name="left">
+            <block type="core/template" name="facebook_activity_left_product" after="-" >
+                <action method="setTemplate" ifconfig="facebook/activity_feed/left_product_column">
+                    <template>facebook/facebook_activity.phtml</template>
+                </action>
+            </block> 
+        </reference>
+        <reference name="right">
+            <block type="core/template" name="facebook_activity_right_product" after="-" >
+                <action method="setTemplate" ifconfig="facebook/activity_feed/right_product_column">
+                    <template>facebook/facebook_activity.phtml</template>
+                </action>
+            </block> 
+        </reference>
+    </catalog_product_view>
+</layout> 

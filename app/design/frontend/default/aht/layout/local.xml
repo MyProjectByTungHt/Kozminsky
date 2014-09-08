@@ -1,0 +1,375 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<layout version="0.1.0">
+    <!--
+    Default layout, loads most of the pages
+    -->
+    <default>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>css/normalize.css</stylesheet>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/local.css</name>
+                <params/>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/local.css</name>
+                <params/>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/html5shiv.js</name>
+                <params/>
+                <if>lt IE 9</if>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/PIE/PIE.js</name>
+                <params/>
+                <if>lt IE 9</if>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/PIE/pie-functions.js</name>
+                <params/>
+                <if>lt IE 9</if>
+            </action>
+            <action method="removeItem">
+                <type>skin_css</type>
+                <name>css/styles.css</name>
+            </action>
+            <action method="removeItem">
+                <type>skin_css</type>
+                <name>css/widgets.css</name>
+            </action>
+            <action method="removeItem">
+                <type>skin_css</type>
+                <name>css/print.css</name>
+            </action>
+        </reference>
+        <reference name="header">
+            <action method="setTemplate">
+                <template>page/html/header.phtml</template>
+            </action>
+            <remove name="store_language"/>
+            <block type="cms/block" name="shopping_info">
+                <action method="setBlockId">
+                    <block_id>shopping_info</block_id>
+                </action>
+            </block>
+            <block type="cms/block" name="top_social">
+                <action method="setBlockId">
+                    <block_id>top_social</block_id>
+                </action>
+            </block>
+            <block type="cms/block" name="top_card">
+                <action method="setBlockId">
+                    <block_id>top_card</block_id>
+                </action>
+            </block>
+            <reference name="top.menu">
+                <action method="setTemplate">
+                    <template>page/html/topmenu.phtml</template>
+                </action>                
+            </reference>
+            <reference name="top.links">
+                <remove name="checkout_cart_link"/>
+                <block type="checkout/links" name="checkout_cart_link_custom">
+                    <action method="addCartLink"></action>
+                    <!--<action method="addCheckoutLink"></action>-->
+                </block>
+            </reference>
+            <block type="core/template" name="top.search" as="topSearch" template="catalogsearch/form.mini.phtml"/>
+               
+        </reference>
+        <reference name="footer">
+            <action method="setTemplate">
+                <template>page/html/footer.phtml</template>
+            </action>
+            <remove name="store_switcher"/>
+            <remove name="footer_links"/>
+            <block type="customer/account_navigation" name="customer_account_navigation" before="-" template="customer/account/navigation.phtml">
+                <action method="addLink" translate="label" module="customer">
+                    <name>account_login</name>
+                    <path>customer/account/login</path>
+                    <label>Sign In</label>
+                </action>
+                <action method="addLink" translate="label" module="Checkout">
+                    <name>cart_link</name>
+                    <path>checkout/cart</path>
+                    <label>View Cart</label>
+                </action>
+                <action method="addLink" translate="label" module="Wishlist">
+                    <name>wishlist</name>
+                    <path>wishlist</path>
+                    <label>My Wishlist</label>
+                </action>
+                <action method="addLink" translate="label" module="customer">
+                    <name>track_order</name>
+                    <path>sales/order/history</path>
+                    <label>Track My Order</label>
+                </action>
+            </block>
+            <block type="cms/block" name="information_navigation">
+                <action method="setBlockId">
+                    <block_id>information_navigation</block_id>
+                </action>
+            </block>
+            <block type="cms/block" name="buyformus_navigation">
+                <action method="setBlockId">
+                    <block_id>buyformus_navigation</block_id>
+                </action>
+            </block>
+            <block type="cms/block" name="top_social">
+                <action method="setBlockId">
+                    <block_id>top_social</block_id>
+                </action>
+            </block>
+        </reference>
+    </default>
+    
+    <cms_index_index translate="label">
+        <label>CMS Home Page</label>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/carousel.js</name>
+                <params/>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery-1.11.0.min.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery-migrate-1.2.1.min.js</name>
+            </action>            
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/myslider.js</name>
+            </action>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>			
+        </reference>
+        <reference name="content">
+            <block type="cms/block" name="main-slider">
+                <action method="setBlockId">
+                    <block_id>main-slider</block_id>
+                </action>
+            </block>
+            <block type="cms/block" name="banner">
+                <action method="setBlockId">
+                    <block_id>banner</block_id>
+                </action>
+            </block>
+            <block type="catalog/product_new" name="home.catalog.product.new" alias="product_new" template="catalog/product/new.phtml" after="banner">
+            </block>
+            <block type="cms/block" name="facebook_feed" after="product_new">
+                <action method="setBlockId">
+                    <block_id>facebook_feed</block_id>
+                </action>
+            </block>
+            <block type="cms/block" name="join_info" after="facebook_feed">
+                <action method="setBlockId">
+                    <block_id>join_info</block_id>
+                </action>
+            </block>
+            <block type="newsletter/subscribe" name="newsletter" as="newsletter" template="newsletter/subscribe.phtml" after="join_info" />
+        </reference>
+    </cms_index_index>
+    <catalog_category_default>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
+        </reference>
+        <reference name="header">
+            <block type="cms/block" name="banner_categoryview" as="bannerCate" after="topSearch">
+                <action method="setBlockId">
+                    <block_id>banner_categoryview</block_id>
+                </action>
+            </block>
+        </reference>
+        <reference name="left">
+            <remove name="left.permanent.callout"/>
+            <remove name="tags_popular"/>
+            <remove name="left.newsletter"/>
+            <remove name="currency"/>
+            <block type="catalog/layer_view" name="left.nav" before="-" template="catalog/layer/view.phtml"/>            
+        </reference>
+    </catalog_category_default>
+    <catalog_category_layered translate="label">
+        <reference name="content">
+            <reference name="category.products">
+                <action method="setTemplate">
+                    <template>catalog/category/view.phtml</template>
+                </action>
+                <reference name="product_list">
+                    <action method="setTemplate">
+                        <template>catalog/product/list.phtml</template>
+                    </action>
+                    <reference name="product_list_toolbar">
+                        <action method="setTemplate">
+                            <template>catalog/product/list/toolbar.phtml</template>
+                        </action>
+                    </reference>
+                </reference>
+            </reference>
+        </reference>       
+		
+        <reference name="left">
+            
+        </reference>
+    </catalog_category_layered>
+    
+    <catalog_product_view translate="label">
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="head">
+        </reference>
+        <reference name="content">
+            <reference name="product.info">
+                <block type="catalog/product_view_tabs" name="product.info.tabs" as="info_tabs" template="catalog/product/view/tabs.phtml" >
+                    <action method="addTab" translate="title" module="catalog">
+                        <alias>infocare</alias>
+                        <title>INFOR &amp; CARE</title>
+                        <block>cms/block</block>
+                        <template>null</template>
+                    </action>
+                    
+                    <action method="addTab" translate="title" module="catalog">
+                        <alias>fabric</alias>
+                        <title>Fabric</title>
+                        <block>cms/block</block>
+                        <template>null</template>
+                    </action>
+                    <action method="addTab" translate="title" module="catalog">
+                        <alias>features</alias>
+                        <title>Features</title>
+                        <block>cms/block</block>
+                        <template>null</template>
+                    </action>-->
+                    <action method="addTab" translate="title" module="catalog">
+                        <alias>review</alias>
+                        <title>Reviews</title>
+                        <block>review/form</block>
+                        <template>review/form.phtml</template>
+                    </action>
+                    
+                    <action method="addTab" translate="title" module="catalog">
+                        <alias>delivery</alias>
+                        <title>Delivery</title>
+                        <block>cms/block</block>
+                        <template>null</template>
+                    </action>
+                    <action method="addTab" translate="title" module="catalog">
+                        <alias>return_tab</alias>
+                        <title>Returns</title>
+                        <block>cms/block</block>
+                        <template>null</template>
+                    </action>
+                    <block type="cms/block" name="fabric">
+                        <action method="setBlockId">
+                            <block_id>fabric</block_id>
+                        </action>
+                    </block>
+                    <block type="cms/block" name="delivery">
+                        <action method="setBlockId">
+                            <block_id>delivery</block_id>
+                        </action>
+                    </block>
+                    <block type="cms/block" name="return_tab">
+                        <action method="setBlockId">
+                            <block_id>return_tab</block_id>
+                        </action>
+                    </block>
+                    <block type="cms/block" name="features">
+                        <action method="setBlockId">
+                            <block_id>features</block_id>
+                        </action>
+                    </block>
+					
+                    <block type="cms/block" name="infocare">
+                        <action method="setBlockId">
+                            <block_id>infocare</block_id>
+                        </action>
+                    </block>
+                </block>
+                <block type="cms/block" name="sociallike">
+                    <action method="setBlockId">
+                        <block_id>sociallike</block_id>
+                    </action>
+                </block>
+                <block type="creatormodule/creatormodule" name="creatormodule" template="creatormodule/creatormodule.phtml" />
+<!--                <block type="core/template" name="qa_qa" template="qa/qa.phtml"></block>-->
+                <block type="catalog/product_list_related" name="catalog.product.related" as="relateds" template="catalog/product/list/related.phtml">
+                </block>
+                <block type="reports/product_viewed" name="product.recently.viewed" as="product_recently_viewed" template="reports/product_viewed.phtml"/>
+            </reference>            
+        </reference>
+    </catalog_product_view>
+    <catalogsearch_result_index translate="label">
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="left">
+            <remove name="left.permanent.callout"/>
+            <remove name="tags_popular"/>
+            <remove name="left.newsletter"/>
+            <remove name="currency"/>
+            <block type="catalog/layer_view" name="left.nav" before="-" template="catalog/layer/view.phtml"/> 
+        </reference>
+        <reference name="content">
+            <block type="catalogsearch/result" name="search.result" template="catalogsearch/result.phtml">
+                <block type="catalog/product_list" name="search_result_list" template="catalog/product/list.phtml">
+                    <block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+                        <block type="page/html_pager" name="product_list_toolbar_pager"/>
+                    </block>
+                    <action method="addColumnCountLayoutDepend"><layout>empty</layout><count>6</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>one_column</layout><count>5</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>two_columns_left</layout><count>4</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>two_columns_right</layout><count>4</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>three_columns</layout><count>3</count></action>
+                    <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+                </block>
+                <action method="setListOrders"/>
+                <action method="setListModes"/>
+                <action method="setListCollection"/>
+            </block>
+        </reference>
+    </catalogsearch_result_index>
+</layout>

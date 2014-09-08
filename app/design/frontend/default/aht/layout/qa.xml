@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<layout>
+    <qa_index_index>
+        <reference name="content">
+            <block type="qa/qa" name="qa.qa" template="qa/qa.phtml"></block>    
+        </reference>
+    </qa_index_index>
+</layout>

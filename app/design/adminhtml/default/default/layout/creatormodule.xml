@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            
+        </reference>
+    </default>
+    <creatormodule_adminhtml_creatormodule_index>
+        <!--        <reference name="head">
+            <action method="setCanLoadTinyMce"><flag>1</flag></action>
+        </reference>-->
+        <reference name="content">
+            <block type="creatormodule/adminhtml_creatormodule" name="creatormodule" />
+        </reference>
+    </creatormodule_adminhtml_creatormodule_index>
+      
+<!--    <adminhtml_catalog_product_edit>
+        <referentce name="product_tabs">
+            <block type="creatormodule/adminhtml_catalog_product_edit_tab" name="question_tab">
+                <action method="addTab">
+                    <name>Question Tab</name>
+                    <block>question_tab</block>
+                </action>
+            </block>
+        </referentce>
+    </adminhtml_catalog_product_edit>-->
+    <creatormodule_adminhtml_creatormodule_products>
+         <block type="core/text_list" name="root" output="toHtml">
+           <block type="creatormodule/adminhtml_creatormodule_edit_tab_productgrid" name="creatormodule.edit.tab.productgrid"/>
+           <block type="adminhtml/widget_grid_serializer" name="product_grid_serializer">
+               <reference name="product_grid_serializer">
+                   <action method="initSerializerBlock">
+                       <grid_block_name>creatormodule.edit.tab.productgrid</grid_block_name>
+                       <data_callback>getSelectedProducts</data_callback>
+                       <hidden_input_name>links[products]</hidden_input_name>
+                       <reload_param_name>creatormodule_products</reload_param_name>
+                   </action>
+                   <action method="addColumnInputName">
+                       <input_name>position</input_name>
+                   </action>                  
+               </reference>
+           </block>
+       </block>
+    </creatormodule_adminhtml_creatormodule_products>
+    <creatormodule_adminhtml_creatormodule_productsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="creatormodule/adminhtml_creatormodule_edit_tab_productgrid" name="creatormodule.edit.tab.productgrid"/>
+        </block>
+    </creatormodule_adminhtml_creatormodule_productsgrid>
+<!--    <creatormodule_adminhtml_creatormodule_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="adminhtml/creatormodule_grid" name="creatormodule.product.grid"/>
+        </block>
+    </creatormodule_adminhtml_creatormodule_grid>-->
+</layout>

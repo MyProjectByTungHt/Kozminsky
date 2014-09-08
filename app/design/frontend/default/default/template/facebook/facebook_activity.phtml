@@ -1,0 +1,14 @@
+<?php  if (Mage::getStoreConfig('facebook/facebook_general/enabled')) : ?>
+
+<fb:activity
+site="<?php echo $this->helper('core/url')->getCurrentUrl(); ?>" 
+width="<?php echo Mage::getStoreConfig('facebook/activity_feed/width'); ?>" 
+height="<?php echo Mage::getStoreConfig('facebook/activity_feed/height'); ?>" 
+header="<?php echo (Mage::getStoreConfig('facebook/activity_feed/header')) ? 'true' : 'false'; ?>"
+colorscheme="<?php echo Mage::getStoreConfig('facebook/activity_feed/colorscheme'); ?>" 
+linktarget="<?php echo Mage::getStoreConfig('facebook/activity_feed/linktarget'); ?>"
+font="<?php echo Mage::getStoreConfig('facebook/activity_feed/font'); ?>" 
+recommendations="<?php echo (Mage::getStoreConfig('facebook/activity_feed/recommendations')) ? 'true' : 'false'; ?>"></fb:activity>    
+
+
+<?php endif; ?>
